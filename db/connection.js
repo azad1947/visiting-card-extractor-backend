@@ -5,7 +5,7 @@ config();
 const mongo_url = process.env.MONGODB_URI;
 
 const connect_to_db = () => {
-    mongoose.connect(mongo_url);
+    mongoose.connect(mongo_url, { maxPoolSize: 10 });
 
     mongoose.connection.on('connected', () => {
         console.log('connected to the db.')
